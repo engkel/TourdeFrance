@@ -20,9 +20,17 @@ namespace TourdeFrance
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        List<Cyclist> cyclists = new List<Cyclist>();
+        
+
+
         public MainWindow()
         {
             InitializeComponent();
+
+
+           // cyclists.Add(new Cyclist())
         }
     }
 }
