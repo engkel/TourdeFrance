@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace TourdeFrance
 {
@@ -12,9 +13,16 @@ namespace TourdeFrance
 
         public void makeList()
         {
+            
+            
+            string fileName = "Cycling-Tour-De-France.xml";
+            XElement root = XElement.Load(fileName);
+            var allNames = from e in root.Descendants("name") select e;
 
-
-
+            foreach (string name in allNames)
+            {
+                System.Console.WriteLine("Found this pizza name " + name);
+            }
 
 
 
