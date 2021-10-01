@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace TourdeFrance
 {
-    class ListMaker
+    public class ListMaker
     {
         private List<Cyclist> cyclists = new List<Cyclist>();
 
@@ -31,10 +33,10 @@ namespace TourdeFrance
                 Cyclist cyclist = new Cyclist(allNames.ElementAt(i), allGenders.ElementAt(i), Int32.Parse(allCountries.ElementAt(i)), Int32.Parse(allIds.ElementAt(i)));
                 
                 var result = from e in root.Descendants("result") where (string)e.Attribute("result_code") == "duration" where ((int)e.Attribute("event_participantsFK") == Int32.Parse(allIds.ElementAt(i))) select e.Attribute("value");
-                cyclist.setResult(result.ElementAt(0).ToString());
+                //cyclist.setResult(result.ElementAt(0).ToString());
 
                 var possition = from e in root.Descendants("result") where (string)e.Attribute("result_code") == "rank" where ((int)e.Attribute("event_participantsFK") == Int32.Parse(allIds.ElementAt(i))) select e.Attribute("value");
-                cyclist.setPossition(Int32.Parse(possition.ElementAt(0).ToString()));
+               // cyclist.setPossition(Int32.Parse(possition.ElementAt(0).ToString()));
 
                 cyclists.Add(cyclist);
             }
@@ -50,10 +52,15 @@ namespace TourdeFrance
 
         
 
+        public void createXML()
+        {
+            //Creating an xml for cyclists
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Cyclist>));
+            TextWriter tw = new StreamWriter(@"C:\Users\Andrej\Source\Repos\engkel\TourdeFrance\Cyclist.xml");
+            serializer.Serialize(tw, cyclists);
 
 
-
-
+        }
 
     }
 }

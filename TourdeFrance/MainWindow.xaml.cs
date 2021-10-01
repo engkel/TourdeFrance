@@ -33,7 +33,7 @@ namespace TourdeFrance
             
             ListMaker ls = new ListMaker();
             ls.makeList();
-
+            ls.createXML();
            // cyclists.Add(new Cyclist())
         }
     }

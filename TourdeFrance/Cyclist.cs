@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TourdeFrance
 {
-    class Cyclist
+    public class Cyclist
     {
         //Name of participant, gender, country origin, result time, end position
 
@@ -19,7 +19,10 @@ namespace TourdeFrance
         private int endPosition;
 
 
+        public Cyclist()
+        {
 
+        }
 
         public Cyclist(String name, String gender, int country,int id)
         {
