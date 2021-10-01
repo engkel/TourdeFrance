@@ -1,139 +1,23 @@
-<?xml encoding="utf-8"?>
+<!ELEMENT spocosy (query-response,sport,tournament_template,tournament,tournament_stage,event,properties,(property),event_participant+,participant,result)>
 
-<!ELEMENT spocosy (query-response)>
-<!ATTLIST spocosy
-  xmlns CDATA #FIXED ''
-  exec CDATA #REQUIRED
-  responsetime CDATA #REQUIRED
-  version CDATA #REQUIRED>
+<!ELEMENT query-response ( #PCDATA) >
 
-<!ELEMENT query-response (sport)>
-<!ATTLIST query-response
-  xmlns CDATA #FIXED ''
-  requestid CDATA #REQUIRED
-  service NMTOKEN #REQUIRED>
+<!ELEMENT sport ( #PCDATA) >
 
-<!ELEMENT sport (tournament_template)>
-<!ATTLIST sport
-  xmlns CDATA #FIXED ''
-  del NMTOKEN #REQUIRED
-  enetSportCode NMTOKEN #REQUIRED
-  id CDATA #REQUIRED
-  n CDATA #REQUIRED
-  name NMTOKEN #REQUIRED
-  ut CDATA #REQUIRED>
+<!ELEMENT tournament_template( #PCDATA) >
 
-<!ELEMENT tournament_template (tournament)>
-<!ATTLIST tournament_template
-  xmlns CDATA #FIXED ''
-  del NMTOKEN #REQUIRED
-  enetID CDATA #REQUIRED
-  gender NMTOKEN #REQUIRED
-  id CDATA #REQUIRED
-  n CDATA #REQUIRED
-  name CDATA #REQUIRED
-  sportFK CDATA #REQUIRED
-  ut CDATA #REQUIRED>
+<!ELEMENT tournament ( #PCDATA) >
 
-<!ELEMENT tournament (tournament_stage)>
-<!ATTLIST tournament
-  xmlns CDATA #FIXED ''
-  del NMTOKEN #REQUIRED
-  enetSeasonID CDATA #REQUIRED
-  id CDATA #REQUIRED
-  locked NMTOKEN #REQUIRED
-  n CDATA #REQUIRED
-  name CDATA #REQUIRED
-  tournament_templateFK CDATA #REQUIRED
-  ut CDATA #REQUIRED>
+<!ELEMENT tournament_stage ( #PCDATA) >
 
-<!ELEMENT tournament_stage (event)>
-<!ATTLIST tournament_stage
-  xmlns CDATA #FIXED ''
-  countryFK CDATA #REQUIRED
-  del NMTOKEN #REQUIRED
-  enddate NMTOKEN #REQUIRED
-  enetID CDATA #REQUIRED
-  gender NMTOKEN #REQUIRED
-  id CDATA #REQUIRED
-  locked NMTOKEN #REQUIRED
-  n CDATA #REQUIRED
-  name CDATA #REQUIRED
-  startdate NMTOKEN #REQUIRED
-  tournamentFK CDATA #REQUIRED
-  ut CDATA #REQUIRED>
+<!ELEMENT event ( #PCDATA) >
 
-<!ELEMENT event (properties,event_participant+)>
-<!ATTLIST event
-  xmlns CDATA #FIXED ''
-  del NMTOKEN #REQUIRED
-  enetID CDATA #REQUIRED
-  enetSportID NMTOKEN #REQUIRED
-  eventstatusFK CDATA #REQUIRED
-  id CDATA #REQUIRED
-  locked NMTOKEN #REQUIRED
-  n CDATA #REQUIRED
-  name CDATA #REQUIRED
-  startdate CDATA #REQUIRED
-  status_descFK CDATA #REQUIRED
-  status_type NMTOKEN #REQUIRED
-  tournament_stageFK CDATA #REQUIRED
-  ut CDATA #REQUIRED>
+<!ELEMENT properties EMPTY>
 
-<!ELEMENT properties (property)+>
-<!ATTLIST properties
-  xmlns CDATA #FIXED ''>
+<!ELEMENT property ( #PCDATA) >
 
-<!ELEMENT event_participant (participant,results?)>
-<!ATTLIST event_participant
-  xmlns CDATA #FIXED ''
-  del NMTOKEN #REQUIRED
-  eventFK CDATA #REQUIRED
-  id CDATA #REQUIRED
-  n CDATA #REQUIRED
-  number CDATA #REQUIRED
-  participantFK CDATA #REQUIRED
-  ut CDATA #REQUIRED>
-
-<!ELEMENT property EMPTY>
-<!ATTLIST property
-  xmlns CDATA #FIXED ''
-  del NMTOKEN #REQUIRED
-  id CDATA #REQUIRED
-  n CDATA #REQUIRED
-  name NMTOKEN #REQUIRED
-  object NMTOKEN #REQUIRED
-  objectFK CDATA #REQUIRED
-  type NMTOKEN #REQUIRED
-  ut CDATA #REQUIRED
-  value CDATA #REQUIRED>
+<!ELEMENT event_participant ( #PCDATA) >
 
 <!ELEMENT participant EMPTY>
-<!ATTLIST participant
-  xmlns CDATA #FIXED ''
-  countryFK CDATA #REQUIRED
-  del NMTOKEN #REQUIRED
-  enetID CDATA #REQUIRED
-  enetSportID CDATA #REQUIRED
-  gender NMTOKEN #REQUIRED
-  id CDATA #REQUIRED
-  n CDATA #REQUIRED
-  name CDATA #REQUIRED
-  type NMTOKEN #REQUIRED
-  ut CDATA #REQUIRED>
-
-<!ELEMENT results (result)+>
-<!ATTLIST results
-  xmlns CDATA #FIXED ''>
 
 <!ELEMENT result EMPTY>
-<!ATTLIST result
-  xmlns CDATA #FIXED ''
-  del NMTOKEN #REQUIRED
-  event_participantsFK CDATA #REQUIRED
-  id CDATA #REQUIRED
-  n CDATA #REQUIRED
-  result_code NMTOKEN #REQUIRED
-  result_typeFK CDATA #REQUIRED
-  ut CDATA #REQUIRED
-  value CDATA #REQUIRED>

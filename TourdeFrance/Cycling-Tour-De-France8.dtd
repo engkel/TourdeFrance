@@ -1,0 +1,23 @@
+<!ELEMENT spocosy (query-response,sport,tournament_template,tournament,tournament_stage,event,properties,property+,event_participant+,participant,(result)+,results)>
+
+<!ELEMENT query-response ( #PCDATA) >
+
+<!ELEMENT sport ( #PCDATA) >
+
+<!ELEMENT tournament_template( #PCDATA) >
+
+<!ELEMENT tournament ( #PCDATA) >
+
+<!ELEMENT tournament_stage ( #PCDATA) >
+
+<!ELEMENT event ( #PCDATA) >
+
+<!ELEMENT properties EMPTY>
+
+<!ELEMENT property ( #PCDATA) >
+
+<!ELEMENT event_participant ( #PCDATA) >
+
+<!ELEMENT participant EMPTY>
+
+<!ELEMENT result EMPTY>

@@ -1,0 +1,82 @@
+﻿<Window x:Class="TourdeFrance.View.OnlyView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          mc:Ignorable="d"
+        Title="Tour de France" Height="800" Width="800">
+
+    <Window.Resources>
+        <Style x:Key="CustomHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Background" Value="#FFCDE7F4"/>
+            <Setter Property="Foreground" Value="#FF07034B"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFA1CCE0" Offset="0"/>
+                        <GradientStop Color="#FFABD5EA" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Width="600" Height="600">
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="7*"></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="9*"></ColumnDefinition>
+            <ColumnDefinition Width="220*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="" Margin="0,0,0,47" Grid.RowSpan="2"/>
+        <Label Grid.Row="0" Grid.Column="1" Content="" Margin="0,0,0,15"/>
+        <Label Grid.Row="1" Grid.Column="0" Content=""/>
+        <StackPanel Grid.Column="1" Margin="0,38,0,0" Grid.RowSpan="2">
+            <WrapPanel Grid.Row="3" Width="369">
+                <!--Buttons for filtering - unused though - intended to be ICommand in the viewmodel -->
+                <Button Content="Fetch Data" Command="{Binding MyAddCMD}" ></Button>
+                <Button Content="Filter by end-position" Command="{Binding DeleteCMD}"></Button>
+                <Button Content="Filter by result time"></Button>
+                <Button Content="Filter by name"></Button>
+                <Button Content="Filter by country of origin"></Button>
+            </WrapPanel>
+        </StackPanel>
+        <Label Grid.Row="1" Grid.Column="0" Content="" Margin="0,47,5,71" Grid.RowSpan="3"/>
+        <ListView Grid.Row="1" x:Name="lvPlayers" ItemsSource="{Binding PlayerList}" DataContext="{Binding teams}" Margin="5,47,0,36" Grid.RowSpan="3" Grid.Column="1">
+            <!--{Binding XPath=@Name} With the intention of binding to the created xml file made by ListMaker.cs-->
+            <ListView.View>
+                 
+                <GridView ColumnHeaderContainerStyle="{DynamicResource CustomHeaderStyle}">
+                    <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding XPath=@Name}" />
+                    <GridViewColumn Header="Gender" Width="70" DisplayMemberBinding="{Binding XPath=@Gender}" />
+                    <GridViewColumn Header="Country of Origin" Width="100" DisplayMemberBinding="{Binding XPath=@Country}" />
+                    <GridViewColumn Header="Result time" Width="70" DisplayMemberBinding="{Binding XPath=@Resulttime}" />
+                    <GridViewColumn Header="End Position" Width="90" DisplayMemberBinding="{Binding XPath=@EndPosition}" />
+                </GridView>
+            </ListView.View>
+            
+            <ListView.Resources>
+                <XmlDataProvider x:Key="RidersData" Source="Parsed_Cycling-Tour-De-France.xml" XPath="/Cyclist/"/>
+            </ListView.Resources>
+            </ListView>
+    </Grid>
+    <!--
+             <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <Label Content="Name: "/>
+                        <Label Content="{Binding Name}" FontWeight="Bold" />
+                        <Label Content=" NickName: "/>
+                        <Label Content="{Binding NickName}" FontWeight="Bold" />
+                    </WrapPanel>
+                </DataTemplate>
+                </ListView.ItemTemplate>-->
+ 
+</Window>
