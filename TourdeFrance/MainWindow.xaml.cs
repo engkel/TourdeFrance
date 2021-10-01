@@ -28,6 +28,9 @@ namespace TourdeFrance
         public MainWindow()
         {
             InitializeComponent();
+            
+            
+            
             ListMaker ls = new ListMaker();
             ls.makeList();
 

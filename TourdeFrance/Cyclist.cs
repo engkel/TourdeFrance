@@ -13,26 +13,34 @@ namespace TourdeFrance
         private String name;
         private String gender;
         private int country;
+        private int participantId;
+
         private String resultTime;
         private int endPosition;
 
 
 
 
-        public Cyclist(String name, String gender, int country, String result, int position)
+        public Cyclist(String name, String gender, int country,int id)
         {
             this.name = name;
             this.gender = gender;
             this.country = country;
-            this.resultTime = result;
-            this.endPosition = position;
+            this.participantId = id;
+
         }
 
 
+        public void setResult(String result)
+        {
+            this.resultTime = result;
+        }
 
 
-
-
+        public void setPossition (int possition)
+        {
+            this.endPosition = possition;
+        }
 
 
 
