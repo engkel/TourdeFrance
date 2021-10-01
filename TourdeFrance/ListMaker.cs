@@ -13,13 +13,18 @@ namespace TourdeFrance
 
         public void makeList()
         {
+            // Loading the xml file 
 
             XElement root = XElement.Load(@"Cycling-Tour-De-France.xml");
+
+            // Fetching all of the relevant data from the xml
 
             var allNames = from e in root.Descendants("participant") select e.Attribute("name").Value;
             var allGenders = from e in root.Descendants("participant") select e.Attribute("gender").Value;
             var allCountries = from e in root.Descendants("participant") select e.Attribute("countryFK").Value;
             var allIds = from e in root.Descendants("event_participant") select e.Attribute("id").Value;
+
+            // iterating through the data in order to create the cyclist objects with correct parameters 
 
             for(int i =0; i<200; i++)
             {
@@ -37,7 +42,7 @@ namespace TourdeFrance
 
 
         }
-
+        // returning the full List of cyclist
         public List<Cyclist> getList()
         {
             return cyclists;
